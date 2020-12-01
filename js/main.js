@@ -1,7 +1,7 @@
 
 var $urlInput = document.querySelector('#avatarUrl');
 var $image = document.querySelector('img');
-var $userForm = document.querySelector('form');
+var $userForm = document.querySelector('#input-form');
 
 $urlInput.addEventListener('input', function (e) {
 
@@ -10,16 +10,15 @@ $urlInput.addEventListener('input', function (e) {
   } else {
     $image.setAttribute('src', e.target.value);
   }
-
 });
 
 $userForm.addEventListener('submit', function (e) {
   e.preventDefault();
-
   data.profile.username = $userForm.username.value;
   data.profile.fullName = $userForm.fullName.value;
   data.profile.location = $userForm.location.value;
   data.profile.avatarUrl = $userForm.avatarUrl.value;
   data.profile.bio = $userForm.bio.value;
-
+  $userForm.reset();
+  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
 });
