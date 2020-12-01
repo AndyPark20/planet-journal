@@ -14,16 +14,56 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
   <header>
-    <div class="container-header">
-      <div class="row-header">
-        <div class="column-header">
-          <h1>Code Journal</h1>
+    <div class="container">
+      <div class="row">
+        <div class="column-full">
+          <h2>Code Journal</h2>
         </div>
       </div>
     </div>
   </header>
+  <section>
+    <div class="container">
+      <form>
+        <div class="column-full">
+          <h1>Edit Profile</h1>
+        </div>
+        <div class="row">
+          <div class="column-half">
+            <img src="images/placeholder-image-square.jpg" alt="preview">
+          </div>
+          <div class="column-half userInputStyle">
+            <div class="userInputForm">
+              <label for="url">Avatar URL</label><br />
+              <input id="url" type="url" name="url">
+            </div>
+            <div class="userInputForm">
+              <label for="userName">Username</label><br />
+              <input id="userName" type="text" name="userName">
+            </div>
+            <div class="userInputForm">
+              <label for="fullName">Full Name</label><br />
+              <input id="fullName" type="text" name="fullName">
+            </div>
+            <div class="userInputForm">
+              <label for="location">Location</label><br />
+              <input id="location" type="text" name="location">
+            </div>
+          </div>
+          <div class="column-full userInputForm">
+            <label for="bio">Bio</label><br />
+            <textarea id="bio" name="bio" rows="6" cols="90"></textarea>
+            <div class="btnStyle">
+              <button type="submit">SAVE</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
   <main>
     <div data-view="edit-profile"></div>
   </main>
