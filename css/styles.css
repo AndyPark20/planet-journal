@@ -22,18 +22,6 @@ input {
   border: 1px solid black;
 }
 
-button {
-  width: 75px;
-  height: 30px;
-  color: white;
-  border: none;
-  border-radius: 5%;
-  font-family: 'Bebas Neue', cursive, Arial, Helvetica, sans-serif;
-  font-weight: lighter;
-  background-color: #547980;
-  font-size: 20px;
-}
-
 label {
   font-family: 'Bebas Neue', cursive, Arial, Helvetica, sans-serif;
   font-size: 22px;
@@ -46,6 +34,18 @@ textarea {
 
 header {
   background-color: #547980;
+}
+
+.editProfileSaveBtn {
+  width: 75px;
+  height: 30px;
+  color: white;
+  border: none;
+  border-radius: 5%;
+  font-family: 'Bebas Neue', cursive, Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  background-color: #547980;
+  font-size: 20px;
 }
 
 .btnStyle {
