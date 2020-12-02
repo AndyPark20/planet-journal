@@ -118,6 +118,7 @@ function swapWindow(e){
     $editProfileSection.classList.add("hidden");
     $profile.classList.remove("hidden");
     data.view = "profile";
+    renderElements();
 
   }
 
