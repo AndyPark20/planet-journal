@@ -114,9 +114,11 @@ function swapWindow(e){
     $profile.classList.add("hidden");
     data.view = "edit-profile";
   }else if(e === 'profile'){
+    $profile.textContent="";
     $editProfileSection.classList.add("hidden");
     $profile.classList.remove("hidden");
     data.view = "profile";
+
   }
 
 }
