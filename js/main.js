@@ -113,9 +113,11 @@ function swapWindow(e){
   if (checkAttribute ==='edit-profile'){
     $editProfileSection.classList.remove("hidden");
     $profile.classList.add("hidden");
+    data.view = "edit-profile";
   }else if(checkAttribute === 'profile'){
     $editProfileSection.classList.add("hidden");
     $profile.classList.remove("hidden");
+    data.view = "profile";
   }
 
 }
