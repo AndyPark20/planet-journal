@@ -110,6 +110,12 @@ function swapWindow(e) {
   if (e === 'edit-profile') {
     $editProfileSection.classList.remove('hidden');
     $profile.classList.add('hidden');
+    $userForm.username.value = data.profile.username;
+    $userForm.fullName.value = data.profile.fullName;
+    $userForm.location.value = data.profile.location;
+    $userForm.avatarUrl.value = data.profile.avatarUrl;
+    $userForm.bio.value = data.profile.bio;
+    $image.setAttribute('src', data.profile.avatarUrl);
     data.view = 'edit-profile';
   } else if (e === 'profile') {
     $profile.textContent = '';
