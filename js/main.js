@@ -134,10 +134,20 @@ function swapWindow(e) {
 }
 
 document.addEventListener('DOMContentLoaded', function (e) {
-
   if (data.profile.username === '') {
     swapWindow('edit-profile');
   } else if (data.profile.username.length !== 0) {
     swapWindow('profile');
   }
 });
+
+document.addEventListener('click', function(e){
+
+  if(e.target.className ==='linkStyle'){
+    swapWindow('edit-profile');
+  }else {
+    return;
+  }
+
+
+})
