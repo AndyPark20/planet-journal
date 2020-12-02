@@ -106,6 +106,7 @@ function renderElements() {
 
   $profileEditLink.setAttribute('href', '#');
   $profileEditLink.setAttribute('class', 'linkStyle');
+  $profileEditLink.setAttribute('data-view', 'edit-profile');
   $profileEditLink.textContent = 'EDIT';
 
   $userNameColumn.appendChild($profileEditLink);
@@ -141,13 +142,14 @@ document.addEventListener('DOMContentLoaded', function (e) {
   }
 });
 
-document.addEventListener('click', function(e){
+document.addEventListener('click', function (e) {
 
-  if(e.target.className ==='linkStyle'){
-    swapWindow('edit-profile');
-  }else {
-    return;
+  var dataView = e.target.getAttribute('data-view');
+
+  if (dataView === 'edit-profile') {
+    swapWindow(dataView);
+  } else if (e.target.className === 'profileLink') {
+    swapWindow(dataView);
   }
 
-
-})
+});

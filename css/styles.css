@@ -5,8 +5,7 @@ h1 {
   font-weight: lighter;
 }
 
-h2,
-h4 {
+h2 {
   font-family: 'Abril Fatface', cursive, Arial, Helvetica, sans-serif;
   color: white;
   font-weight: lighter;
@@ -53,7 +52,13 @@ a {
   text-decoration: none;
 }
 
-.editProfileSaveBtn s {
+.profileLink {
+  font-family: 'Abril Fatface', cursive, Arial, Helvetica, sans-serif;
+  color: white;
+  font-weight: lighter;
+}
+
+.editProfileSaveBtn {
   width: 75px;
   height: 30px;
   color: white;
