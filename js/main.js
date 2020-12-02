@@ -123,12 +123,13 @@ function swapWindow(e) {
     $userForm.location.value = data.profile.location;
     $userForm.avatarUrl.value = data.profile.avatarUrl;
     $userForm.bio.value = data.profile.bio;
-    if ($userForm.avatarUrl.value.length !== 0) {
+    if (data.profile.avatarUrl.length !== 0) {
       $image.setAttribute('src', data.profile.avatarUrl);
-    } else {
+    } else if (data.profile.avatarUrl.length === 0) {
       $image.setAttribute('src', 'images/placeholder-image-square.jpg');
     }
     data.view = 'edit-profile';
+
   } else if (e === 'profile') {
     $profile.textContent = '';
     $editProfileSection.classList.add('hidden');
