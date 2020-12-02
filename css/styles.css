@@ -5,10 +5,15 @@ h1 {
   font-weight: lighter;
 }
 
-h2 {
+h2,
+h4 {
   font-family: 'Abril Fatface', cursive, Arial, Helvetica, sans-serif;
   color: white;
   font-weight: lighter;
+}
+
+h4 {
+  text-decoration: none;
 }
 
 img {
@@ -44,8 +49,11 @@ p {
   font-size: 20px;
 }
 
-.editProfileSaveBtn,
 a {
+  text-decoration: none;
+}
+
+.editProfileSaveBtn s {
   width: 75px;
   height: 30px;
   color: white;
@@ -55,16 +63,36 @@ a {
   font-weight: lighter;
   background-color: #547980;
   font-size: 23px;
+  text-decoration: none;
+}
+
+.naviLink {
+  padding-left: 3%;
 }
 
 .linkStyle {
   text-align: center;
+  width: 75px;
+  height: 30px;
+  color: white;
+  border: none;
+  border-radius: 5%;
+  font-family: 'Bebas Neue', cursive, Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  background-color: #547980;
+  font-size: 23px;
   text-decoration: none;
 }
 
 .btnStyle {
   margin-top: 1%;
   text-align: right;
+}
+
+.header-background {
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }
 
 .userInputStyle {
