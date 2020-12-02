@@ -53,6 +53,7 @@ function renderElements() {
   var $userLocation = document.createElement('p');
   var $userBioWrapper = document.createElement('div');
   var $userBioText = document.createElement('p');
+  var $profileEditLink = document.createElement('a');
 
   $masterDiv.setAttribute('class', 'column-full');
   $profile.appendChild($masterDiv);
@@ -102,6 +103,12 @@ function renderElements() {
 
   $userBioText.textContent = data.profile.bio;
   $userBioWrapper.appendChild($userBioText);
+
+  $profileEditLink.setAttribute('href', '#');
+  $profileEditLink.setAttribute('class', 'linkStyle');
+  $profileEditLink.textContent = 'EDIT';
+
+  $userNameColumn.appendChild($profileEditLink);
 
   return $masterDiv;
 }
