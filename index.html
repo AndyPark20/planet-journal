@@ -25,6 +25,7 @@
       </div>
     </div>
   </header>
+
   <section>
     <div class="container hidden" data-view="edit-profile">
       <form id="input-form">
@@ -64,8 +65,9 @@
       </form>
     </div>
   </section>
-  <section>
-    <div class="container" data-view="profile">
+
+  <main>
+    <div class="container profilePage" data-view="edit-profile">
       <div class="column-full">
         <h1>Edit Profile</h1>
       </div>
@@ -75,11 +77,15 @@
         </div>
         <div class="column-half wrapper-profile-info">
           <div class="profile-info user-name">
-            <i class="fas fa-user"></i>&nbsp&nbsp&nbsp&nbsp
+            <div class="padding">
+              <i class="fas fa-user"></i>
+            </div>
             <p>Andy Park</p>
           </div>
           <div class="profile-info user-location">
-            <i class="fas fa-map-marker-alt"></i>&nbsp&nbsp&nbsp&nbsp
+            <div class="padding">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
             <p>Andy Park</p>
           </div>
           <div class="profile-info user-bio">
@@ -97,9 +103,6 @@
         </div>
       </div>
     </div>
-  </section>
-  <main>
-    <div data-view="edit-profile"></div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
