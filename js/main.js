@@ -53,6 +53,7 @@ function renderElements() {
   var $userLocation = document.createElement('p');
   var $userBioWrapper = document.createElement('div');
   var $userBioText = document.createElement('p');
+  var $profileEditLink = document.createElement('a');
 
   $masterDiv.setAttribute('class', 'column-full');
   $profile.appendChild($masterDiv);
@@ -103,6 +104,13 @@ function renderElements() {
   $userBioText.textContent = data.profile.bio;
   $userBioWrapper.appendChild($userBioText);
 
+  $profileEditLink.setAttribute('href', '#');
+  $profileEditLink.setAttribute('class', 'linkStyle');
+  $profileEditLink.setAttribute('data-view', 'edit-profile');
+  $profileEditLink.textContent = 'EDIT';
+
+  $userNameColumn.appendChild($profileEditLink);
+
   return $masterDiv;
 }
 
@@ -110,7 +118,18 @@ function swapWindow(e) {
   if (e === 'edit-profile') {
     $editProfileSection.classList.remove('hidden');
     $profile.classList.add('hidden');
+    $userForm.username.value = data.profile.username;
+    $userForm.fullName.value = data.profile.fullName;
+    $userForm.location.value = data.profile.location;
+    $userForm.avatarUrl.value = data.profile.avatarUrl;
+    $userForm.bio.value = data.profile.bio;
+    if (data.profile.avatarUrl.length !== 0) {
+      $image.setAttribute('src', data.profile.avatarUrl);
+    } else if (data.profile.avatarUrl.length === 0) {
+      $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+    }
     data.view = 'edit-profile';
+
   } else if (e === 'profile') {
     $profile.textContent = '';
     $editProfileSection.classList.add('hidden');
@@ -121,10 +140,21 @@ function swapWindow(e) {
 }
 
 document.addEventListener('DOMContentLoaded', function (e) {
-
   if (data.profile.username === '') {
     swapWindow('edit-profile');
   } else if (data.profile.username.length !== 0) {
     swapWindow('profile');
   }
+});
+
+document.addEventListener('click', function (e) {
+
+  var dataView = e.target.getAttribute('data-view');
+
+  if (dataView === 'edit-profile') {
+    swapWindow(dataView);
+  } else if (e.target.className === 'profileLink' && data.profile.username.length !== 0) {
+    swapWindow(dataView);
+  }
+
 });

@@ -11,6 +11,10 @@ h2 {
   font-weight: lighter;
 }
 
+h4 {
+  text-decoration: none;
+}
+
 img {
   width: 100%;
   border: 1px solid black;
@@ -41,7 +45,17 @@ i {
 }
 
 p {
-  font-size: 25px;
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.profileLink {
+  font-family: 'Abril Fatface', cursive, Arial, Helvetica, sans-serif;
+  color: white;
+  font-weight: lighter;
 }
 
 .editProfileSaveBtn {
@@ -53,12 +67,37 @@ p {
   font-family: 'Bebas Neue', cursive, Arial, Helvetica, sans-serif;
   font-weight: lighter;
   background-color: #547980;
-  font-size: 20px;
+  font-size: 23px;
+  text-decoration: none;
+}
+
+.naviLink {
+  padding-left: 3%;
+}
+
+.linkStyle {
+  text-align: center;
+  width: 75px;
+  height: 30px;
+  color: white;
+  border: none;
+  border-radius: 5%;
+  font-family: 'Bebas Neue', cursive, Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  background-color: #547980;
+  font-size: 23px;
+  text-decoration: none;
 }
 
 .btnStyle {
   margin-top: 1%;
   text-align: right;
+}
+
+.header-background {
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }
 
 .userInputStyle {
@@ -74,7 +113,6 @@ p {
 .profile-info {
   display: flex;
   align-items: center;
-
 }
 
 .wrapper-profile-info {
@@ -89,6 +127,6 @@ p {
   font-size: 15px;
 }
 
-.padding{
-  padding-right:20px;
+.padding {
+  padding-right: 20px;
 }
