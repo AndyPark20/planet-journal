@@ -22,3 +22,15 @@ $userForm.addEventListener('submit', function (e) {
   $userForm.reset();
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
 });
+
+window.addEventListener('beforeunload', function () {
+
+  var userData = JSON.stringify(data);
+  localStorage.setItem('inputData', userData);
+});
+
+var getData = localStorage.getItem('inputData');
+
+if (getData !== null) {
+  data = JSON.parse(getData);
+}
