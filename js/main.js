@@ -23,6 +23,9 @@ $userForm.addEventListener('submit', function (e) {
   data.profile.bio = $userForm.bio.value;
   $userForm.reset();
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+
+  swapWindow('profile');
+
 });
 
 window.addEventListener('beforeunload', function () {
