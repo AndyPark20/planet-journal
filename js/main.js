@@ -127,5 +127,4 @@ document.addEventListener('DOMContentLoaded', function (e) {
   } else if (data.profile.username.length !== 0) {
     swapWindow('profile');
   }
-
 });
