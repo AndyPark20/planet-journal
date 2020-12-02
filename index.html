@@ -1,25 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Journal</title>
-  <link
-    rel="stylesheet"
-    crossorigin="anonymous"
+  <link rel="stylesheet" crossorigin="anonymous"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
   <header>
+    <div class="container">
+      <div class="row">
+        <div class="column-full header-background">
+          <h2>Code Journal</h2>
+        </div>
+      </div>
+    </div>
   </header>
+  <section>
+    <div class="container">
+      <form id="input-form">
+        <div class="column-full">
+          <h1>Edit Profile</h1>
+        </div>
+        <div class="row">
+          <div class="column-half">
+            <img src="images/placeholder-image-square.jpg" alt="preview">
+          </div>
+          <div class="column-half userInputStyle">
+            <div class="userInputForm">
+              <label for="avatarUrl">Avatar URL</label><br />
+              <input id="avatarUrl" type="url" name="avatarUrl" required>
+            </div>
+            <div class="userInputForm">
+              <label for="userName">Username</label><br />
+              <input id="userName" type="text" name="username" required>
+            </div>
+            <div class="userInputForm">
+              <label for="fullName">Full Name</label><br />
+              <input id="fullName" type="text" name="fullName" required>
+            </div>
+            <div class="userInputForm">
+              <label for="location">Location</label><br />
+              <input id="location" type="text" name="location" required>
+            </div>
+          </div>
+          <div class="column-full userInputForm">
+            <label for="bio">Bio</label><br />
+            <textarea id="bio" name="bio" rows="6" cols="90" required></textarea>
+            <div class="btnStyle">
+              <input type="submit" value="save" class="editProfileSaveBtn">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
   <main>
     <div data-view="edit-profile"></div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>
