@@ -3,6 +3,7 @@ var $urlInput = document.querySelector('#avatarUrl');
 var $image = document.querySelector('img');
 var $userForm = document.querySelector('#input-form');
 var $profile =document.querySelector('.profilePage')
+var $editProfileSection =document.querySelector('.editProfile')
 
 $urlInput.addEventListener('input', function (e) {
 
@@ -25,20 +26,17 @@ $userForm.addEventListener('submit', function (e) {
 });
 
 window.addEventListener('beforeunload', function () {
-
   var userData = JSON.stringify(data);
   localStorage.setItem('inputData', userData);
 });
 
 var getData = localStorage.getItem('inputData');
-
 if (getData !== null) {
   data = JSON.parse(getData);
 }
 
 
 function renderElements(){
-
   var $masterDiv =document.createElement('div');
   var $profileHeader =document.createElement('h1');
   var $profileRow =document.createElement('div')
@@ -55,7 +53,6 @@ function renderElements(){
   var $userLocation =document.createElement('p')
   var $userBioWrapper =document.createElement('div')
   var $userBioText=document.createElement('p')
-
 
   $masterDiv.setAttribute('class', "column-full");
   $profile.appendChild($masterDiv);
@@ -106,7 +103,19 @@ function renderElements(){
   $userBioText.textContent =data.profile.bio;
   $userBioWrapper.appendChild($userBioText);
 
-
   return $masterDiv;
+}
+
+function swapWindow(e){
+
+  var checkAttribute=e.target.getAttribute('data-view')
+
+  if (checkAttribute ==='edit-profile'){
+    $editProfileSection.classList.remove("hidden");
+    $profile.classList.add("hidden");
+  }else if(checkAttribute === 'profile'){
+    $editProfileSection.classList.add("hidden");
+    $profile.classList.remove("hidden");
+  }
 
 }
