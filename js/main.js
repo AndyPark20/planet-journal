@@ -108,13 +108,12 @@ function renderElements(){
 
 function swapWindow(e){
 
-  var checkAttribute=e.target.getAttribute('data-view')
 
-  if (checkAttribute ==='edit-profile'){
+  if (e ==='edit-profile'){
     $editProfileSection.classList.remove("hidden");
     $profile.classList.add("hidden");
     data.view = "edit-profile";
-  }else if(checkAttribute === 'profile'){
+  }else if(e === 'profile'){
     $editProfileSection.classList.add("hidden");
     $profile.classList.remove("hidden");
     data.view = "profile";
