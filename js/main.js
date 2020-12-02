@@ -123,7 +123,11 @@ function swapWindow(e) {
     $userForm.location.value = data.profile.location;
     $userForm.avatarUrl.value = data.profile.avatarUrl;
     $userForm.bio.value = data.profile.bio;
-    $image.setAttribute('src', data.profile.avatarUrl);
+    if ($userForm.avatarUrl.value.length !== 0) {
+      $image.setAttribute('src', data.profile.avatarUrl);
+    } else {
+      $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+    }
     data.view = 'edit-profile';
   } else if (e === 'profile') {
     $profile.textContent = '';
