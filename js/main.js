@@ -148,7 +148,7 @@ document.addEventListener('click', function (e) {
 
   if (dataView === 'edit-profile') {
     swapWindow(dataView);
-  } else if (e.target.className === 'profileLink') {
+  } else if (e.target.className === 'profileLink' && data.profile.username.length !== 0) {
     swapWindow(dataView);
   }
 
