@@ -120,4 +120,12 @@ function swapWindow(e) {
   }
 }
 
-document.addEventListener('DOMContentLoaded');
+document.addEventListener('DOMContentLoaded', function (e) {
+
+  if (data.profile.username === '') {
+    swapWindow('edit-profile');
+  } else if (data.profile.username.length !== 0) {
+    swapWindow('profile');
+  }
+
+});
