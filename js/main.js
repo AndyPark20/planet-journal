@@ -46,6 +46,7 @@ $entryForm.addEventListener('submit', function (e) {
   entry.note = $entryForm.notes.value;
   data.entries.push(entry);
   $entryImg.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $entryForm.reset();
 
 });
 
