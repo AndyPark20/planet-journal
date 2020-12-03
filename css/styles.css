@@ -135,3 +135,13 @@ a.profileLink:last-child {
 .padding {
   padding-right: 20px;
 }
+
+.user-entries {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.user-entries .userInputForm:last-child {
+  padding-top: 5%;
+}

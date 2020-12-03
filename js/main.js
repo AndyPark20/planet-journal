@@ -1,10 +1,11 @@
 
 var $urlInput = document.querySelector('#avatarUrl');
 var $image = document.querySelector('img');
-var $userForm = document.querySelector('#input-form');
+var $userForm = document.querySelector('.input-form');
 var $profile = document.querySelector('.profilePage');
 var $editProfileSection = document.querySelector('.editProfile');
-var $entries = document.querySelector('.entriesPage')
+var $entries = document.querySelector('.entriesPage');
+var $createEntries = document.querySelector('.createEntries');
 
 $urlInput.addEventListener('input', function (e) {
 
@@ -119,7 +120,8 @@ function swapWindow(e) {
   if (e === 'edit-profile') {
     $editProfileSection.classList.remove('hidden');
     $profile.classList.add('hidden');
-    $entries.classList.add('hidden')
+    $entries.classList.add('hidden');
+    $createEntries.classList.add('hidden');
     $userForm.username.value = data.profile.username;
     $userForm.fullName.value = data.profile.fullName;
     $userForm.location.value = data.profile.location;
@@ -136,14 +138,23 @@ function swapWindow(e) {
     $profile.textContent = '';
     $editProfileSection.classList.add('hidden');
     $profile.classList.remove('hidden');
-    $entries.classList.add('hidden')
+    $entries.classList.add('hidden');
+    $createEntries.classList.add('hidden');
     data.view = 'profile';
     renderElements();
-  }else if(e ==='entries'){
+  } else if (e === 'entries') {
     $editProfileSection.classList.add('hidden');
     $profile.classList.add('hidden');
-    $entries.classList.remove('hidden')
+    $entries.classList.remove('hidden');
+    $createEntries.classList.add('hidden');
     data.view = 'entries';
+  } else if (e === 'create-entry') {
+    $editProfileSection.classList.add('hidden');
+    $profile.classList.add('hidden');
+    $entries.classList.remove('hidden');
+    $createEntries.classList.add('hidden');
+    $createEntries.classList.remove('hidden');
+    data.view = 'create-entry';
   }
 }
 
@@ -156,25 +167,22 @@ document.addEventListener('DOMContentLoaded', function (e) {
 });
 
 document.addEventListener('click', function (e) {
-
   var dataView = e.target.getAttribute('data-view');
 
-  console.log(e.target.getAttribute('data-view'))
   if (dataView === 'edit-profile') {
     swapWindow(dataView);
   } else if (dataView === 'profile' && data.profile.username.length !== 0) {
     swapWindow(dataView);
-  } else if (dataView ==='entries' && formInputFilled() === true){
+  } else if (dataView === 'entries' && formInputFilled() === true) {
     swapWindow(dataView);
   }
 
 });
 
-
-function formInputFilled(){
-  if(data.profile.avatarUrl.length!==0 && data.profile.bio.length !==0 && data.profile.fullName.length !==0 && data.profile.location.length !==0 && data.profile.username.length !==0){
+function formInputFilled() {
+  if (data.profile.avatarUrl.length !== 0 && data.profile.bio.length !== 0 && data.profile.fullName.length !== 0 && data.profile.location.length !== 0 && data.profile.username.length !== 0) {
     return true;
-  }else{
+  } else {
     return false;
   }
 }

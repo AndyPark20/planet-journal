@@ -32,7 +32,7 @@
 
   <section>
     <div class="container editProfile" data-view="edit-profile">
-      <form id="input-form">
+      <form class="input-form">
         <div class="column-full">
           <h1>Edit Profile</h1>
         </div>
@@ -69,9 +69,39 @@
       </form>
     </div>
   </section>
+
   <section>
-    <div class="container createEntries" data-view="create-entry"></div>
+    <div class="container createEntries" data-view="create-entry">
+      <form class="input-form">
+        <div class="column-full">
+          <h1>Edit Profile</h1>
+        </div>
+        <div class="row">
+          <div class="column-half">
+            <img src="images/placeholder-image-square.jpg" alt="preview">
+          </div>
+          <div class="column-half user-entries">
+            <div class="userInputForm">
+              <label for="photoUrl">Photo URL</label><br />
+              <input id="photoUrl" type="url" name="photoUrl" required>
+            </div>
+            <div class="userInputForm">
+              <label for="title">Title</label><br />
+              <input id="title" type="text" name="title" required>
+            </div>
+          </div>
+          <div class="column-full userInputForm">
+            <label for="notes">Notes</label><br />
+            <textarea id="notes" name="notes" rows="6" cols="90" required></textarea>
+            <div class="btnStyle">
+              <input type="submit" value="save" class="editProfileSaveBtn">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   </section>
+
   <main>
     <div class="container profilePage hidden" data-view="profile"></div>
     <div class="container entriesPage" data-view="entries"></div>
