@@ -44,6 +44,7 @@ $entryForm.addEventListener('submit', function (e) {
   entry.photoUrl = $entryForm.photoUrl.value;
   entry.title = $entryForm.title.value;
   entry.note = $entryForm.notes.value;
+  data.entries.push(entry);
 });
 
 window.addEventListener('beforeunload', function () {
