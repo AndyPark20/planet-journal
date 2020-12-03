@@ -1,4 +1,3 @@
-
 var $urlInput = document.querySelector('#avatarUrl');
 var $image = document.querySelector('img');
 var $userForm = document.querySelector('.input-form');
@@ -6,15 +5,26 @@ var $profile = document.querySelector('.profilePage');
 var $editProfileSection = document.querySelector('.editProfile');
 var $entries = document.querySelector('.entriesPage');
 var $createEntries = document.querySelector('.createEntries');
+var $photoUrl = document.querySelector('#photoUrl');
+var $entryImg = document.querySelector('img.entryImage');
 
-$urlInput.addEventListener('input', function (e) {
-
+function urlInputSet(e) {
   if ($urlInput.value === '') {
     $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   } else {
     $image.setAttribute('src', e.target.value);
   }
-});
+
+  if ($photoUrl.value === '') {
+    $entryImg.setAttribute('src', 'images/placeholder-image-square.jpg');
+  } else {
+    $entryImg.setAttribute('src', e.target.value);
+  }
+
+}
+
+$urlInput.addEventListener('input', urlInputSet);
+$photoUrl.addEventListener('input', urlInputSet);
 
 $userForm.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -177,6 +187,9 @@ document.addEventListener('click', function (e) {
     swapWindow(dataView);
   }
 
+  if (e.target.className === 'entriesSaveBtn') {
+    swapWindow('create-entry');
+  }
 });
 
 function formInputFilled() {
