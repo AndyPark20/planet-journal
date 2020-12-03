@@ -41,7 +41,9 @@ $userForm.addEventListener('submit', function (e) {
 
 $entryForm.addEventListener('submit', function (e) {
   e.preventDefault();
-
+  entry.photoUrl = $entryForm.photoUrl.value;
+  entry.title = $entryForm.title.value;
+  entry.note = $entryForm.notes.value;
 });
 
 window.addEventListener('beforeunload', function () {
