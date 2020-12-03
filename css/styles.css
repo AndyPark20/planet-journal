@@ -11,13 +11,18 @@ h2 {
   font-weight: lighter;
 }
 
+h3 {
+  font-family: 'Abril Fatface', cursive, Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+
 h4 {
   text-decoration: none;
 }
 
 img {
   width: 100%;
-  border: 1px solid black;
+  border-radius: 2%;
 }
 
 input {
@@ -50,6 +55,17 @@ p {
 
 a {
   text-decoration: none;
+}
+
+li {
+  margin-top: 3%;
+  display: flex;
+  text-align: left;
+}
+
+ol {
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .profileLink {
@@ -163,4 +179,9 @@ a.profileLink:last-child {
   background-color: #547980;
   font-size: 23px;
   text-decoration: none;
+}
+
+.entriesContent {
+  display: flex;
+  flex-direction: column;
 }
