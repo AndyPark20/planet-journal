@@ -1,12 +1,13 @@
 var $urlInput = document.querySelector('#avatarUrl');
 var $image = document.querySelector('img');
-var $userForm = document.querySelector('.input-form');
+var $userForm = document.querySelector('#input-form');
 var $profile = document.querySelector('.profilePage');
 var $editProfileSection = document.querySelector('.editProfile');
 var $entries = document.querySelector('.entriesPage');
 var $createEntries = document.querySelector('.createEntries');
 var $photoUrl = document.querySelector('#photoUrl');
 var $entryImg = document.querySelector('img.entryImage');
+var $entryForm = document.querySelector('#entry-form');
 
 function urlInputSet(e) {
   if ($urlInput.value === '') {
@@ -36,6 +37,11 @@ $userForm.addEventListener('submit', function (e) {
   $userForm.reset();
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   swapWindow('profile');
+});
+
+$entryForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+
 });
 
 window.addEventListener('beforeunload', function () {
