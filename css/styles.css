@@ -145,3 +145,22 @@ a.profileLink:last-child {
 .user-entries .userInputForm:last-child {
   padding-top: 5%;
 }
+
+.entries-style {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entriesSaveBtn {
+  width: 75px;
+  height: 30px;
+  color: white;
+  border: none;
+  border-radius: 5%;
+  font-family: 'Bebas Neue', cursive, Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  background-color: #547980;
+  font-size: 23px;
+  text-decoration: none;
+}

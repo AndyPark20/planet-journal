@@ -151,7 +151,7 @@ function swapWindow(e) {
   } else if (e === 'create-entry') {
     $editProfileSection.classList.add('hidden');
     $profile.classList.add('hidden');
-    $entries.classList.remove('hidden');
+    $entries.classList.add('hidden');
     $createEntries.classList.add('hidden');
     $createEntries.classList.remove('hidden');
     data.view = 'create-entry';
