@@ -87,6 +87,19 @@ ol {
   text-decoration: none;
 }
 
+.editEntrySaveBtn {
+  width: 75px;
+  height: 30px;
+  color: white;
+  border: none;
+  border-radius: 5%;
+  font-family: 'Bebas Neue', cursive, Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  background-color: #547980;
+  font-size: 23px;
+  text-decoration: none;
+}
+
 .naviLink {
   display: flex;
   padding-left: 3%;
