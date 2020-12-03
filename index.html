@@ -23,6 +23,7 @@
           <h2>Code Journal</h2>
           <div class="naviLink">
           <a href="#" data-view="profile" class="profileLink">Profile</a>
+          <a href="#" data-view="entries" class="profileLink">Entries</a>
           </div>
         </div>
       </div>
@@ -42,7 +43,7 @@
           <div class="column-half userInputStyle">
             <div class="userInputForm">
               <label for="avatarUrl">Avatar URL</label><br />
-              <input id="avatarUrl" type="url" name="avatarUrl" required>
+              <input class="url" id="avatarUrl" type="url" name="avatarUrl" required>
             </div>
             <div class="userInputForm">
               <label for="userName">Username</label><br />
@@ -69,8 +70,46 @@
     </div>
   </section>
 
+  <section>
+    <div class="container createEntries" data-view="create-entry">
+      <form  id="entry-form">
+        <div class="column-full">
+          <h1>Create Entry</h1>
+        </div>
+        <div class="row">
+          <div class="column-half">
+            <img class="entryImage" src="images/placeholder-image-square.jpg" alt="preview">
+          </div>
+          <div class="column-half user-entries">
+            <div class="userInputForm">
+              <label for="photoUrl">Photo URL</label><br />
+              <input class="url" id="photoUrl" type="url" name="photoUrl" required>
+            </div>
+            <div class="userInputForm">
+              <label for="title">Title</label><br />
+              <input id="title" type="text" name="title" required>
+            </div>
+          </div>
+          <div class="column-full userInputForm">
+            <label for="notes">Notes</label><br />
+            <textarea id="notes" name="notes" rows="6" cols="90" required></textarea>
+            <div class="btnStyle">
+              <input type="submit" value="save" class="editProfileSaveBtn">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
   <main>
     <div class="container profilePage hidden" data-view="profile"></div>
+    <div class="container entriesPage" data-view="entries">
+      <div class="column-full entries-style">
+        <h1>Entries</h1>
+        <input type="submit" value="NEW" class="entriesSaveBtn">
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

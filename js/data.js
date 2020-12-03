@@ -11,3 +11,10 @@ var data = {
   },
   entries: []
 };
+
+
+var entry ={
+  photoUrl:'',
+  title:'',
+  note:''
+}
