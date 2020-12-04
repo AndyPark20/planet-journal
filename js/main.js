@@ -8,7 +8,7 @@ var $createEntries = document.querySelector('.createEntries');
 var $photoUrl = document.querySelector('#photoUrl');
 var $entryImg = document.querySelector('img.entryImage');
 var $entryForm = document.querySelector('#entry-form');
-var $saveEntryBtn =document.querySelector('.editEntrySaveBtn');
+
 
 function urlInputSet(e) {
   if ($urlInput.value === '') {
@@ -179,19 +179,67 @@ function swapWindow(e) {
     $createEntries.classList.add('hidden');
     $createEntries.classList.remove('hidden');
     data.view = 'create-entry';
+
   }
+
 }
+
+function userEntryList(info) {
+
+  var $entriesMasterRow = document.querySelector('.entryRow');
+  var $entryOrderList = document.createElement('ol');
+  var $entryListing = document.createElement('li');
+  var $entryColumnWrapper = document.createElement('div');
+  var $entryImage = document.createElement('img');
+  var $informationColumnWrapper = document.createElement('div');
+  var $entryInfoHeader = document.createElement('h3')
+  var $entryNotes = document.createElement('p')
+
+  $entriesMasterRow.appendChild($entryOrderList);
+
+  $entryColumnWrapper.setAttribute('class', 'column-half');
+  $entryListing.appendChild($entryColumnWrapper);
+  $entryOrderList.appendChild($entryListing);
+
+  $entryImage.setAttribute('src', info.photoUrl)
+  $entryImage.setAttribute('alt', 'entry-pictures');
+  $entryColumnWrapper.appendChild($entryImage);
+
+  $informationColumnWrapper.setAttribute('class', 'column-half')
+  $entryListing.appendChild($informationColumnWrapper);
+
+  $entryInfoHeader.textContent = info.title;
+  $informationColumnWrapper.appendChild($entryInfoHeader);
+
+  $entryNotes.textContent = info.note;
+  $informationColumnWrapper.appendChild($entryNotes);
+
+  return $entriesMasterRow;
+
+}
+
 
 document.addEventListener('DOMContentLoaded', function (e) {
   if (data.profile.username === '') {
     swapWindow('edit-profile');
-  } else if (data.profile.username.length !== 0) {
+  } else if (data.profile.username.length !== 0 && data.view!=='entries') {
     swapWindow('profile');
+  } else if (data.view ==='entries'){
+    swapWindow('entries');
+  }
+
+    for (var i = data.entries.length - 1; i >= 0; i--) {
+      result = data.entries[i];
+      userEntryList(result);
   }
 });
 
+
+
+
 document.addEventListener('click', function (e) {
   var dataView = e.target.getAttribute('data-view');
+  console.log(e.target.className)
 
   if (dataView === 'edit-profile') {
     swapWindow(dataView);
@@ -204,6 +252,9 @@ document.addEventListener('click', function (e) {
   if (e.target.className === 'entriesSaveBtn') {
     swapWindow('create-entry');
   }
+
+
+
 });
 
 function formInputFilled() {
@@ -212,46 +263,4 @@ function formInputFilled() {
   } else {
     return false;
   }
-}
-
-
-// $saveEntryBtn.addEventListener('click', function(e){
-
-
-
-// });
-
-
-function userEntryList(){
-
-  var $entriesMasterRow =document.querySelector('.entryRow');
-  var $entryOrderList =document.createElement('ol');
-  var $entryListing =document.createElement('li');
-  var $entryColumnWrapper= document.createElement('div');
-  var $entryImage = document.createElement('img');
-  var $informationColumnWrapper =document.createElement('div');
-  var $entryInfoHeader =document.createElement('h3')
-  var $entryNotes =document.createElement('p')
-
-  $entriesMasterRow.appendChild($entryOrderList);
-
-  $entryColumnWrapper.setAttribute('class', 'column-half');
-  $entryListing.appendChild($entryColumnWrapper);
-  $entryOrderList.appendChild($entryListing);
-
-  $entryImage.setAttribute('src','https://cdn.britannica.com/s:700x500/67/21167-004-6B1CF05E/Saturn-storm-Earth-region-observations-image-Hubble-December-1-1994.jpg')
-  $entryImage.setAttribute('alt', 'entry-pictures');
-  $entryColumnWrapper.appendChild($entryImage);
-
-  $informationColumnWrapper.setAttribute('class','column-half')
-  $entryListing.appendChild($informationColumnWrapper);
-
-  $entryInfoHeader.textContent ="BMW"
-  $informationColumnWrapper.appendChild($entryInfoHeader);
-
-  $entryNotes.textContent ="335is has one of the best engines produced in the world";
-  $informationColumnWrapper.appendChild($entryNotes);
-
-  return $entriesMasterRow;
-
 }
