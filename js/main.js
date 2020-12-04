@@ -9,6 +9,7 @@ var $photoUrl = document.querySelector('#photoUrl');
 var $entryImg = document.querySelector('img.entryImage');
 var $entryForm = document.querySelector('#entry-form');
 var $entryList = document.querySelector('#entry-list')
+var $modalWindow =document.querySelector('.modal')
 var liNumber =0;
 
 
@@ -156,6 +157,7 @@ function swapWindow(e) {
     $profile.classList.add('hidden');
     $entries.classList.add('hidden');
     $createEntries.classList.add('hidden');
+    $modalWindow.classList.add('hidden');
     $userForm.username.value = data.profile.username;
     $userForm.fullName.value = data.profile.fullName;
     $userForm.location.value = data.profile.location;
@@ -174,6 +176,7 @@ function swapWindow(e) {
     $profile.classList.remove('hidden');
     $entries.classList.add('hidden');
     $createEntries.classList.add('hidden');
+    $modalWindow.classList.add('hidden');
     data.view = 'profile';
     renderElements();
   } else if (e === 'entries') {
@@ -181,6 +184,7 @@ function swapWindow(e) {
     $profile.classList.add('hidden');
     $entries.classList.remove('hidden');
     $createEntries.classList.add('hidden');
+    // $modalWindow.classList.add('hidden');
     data.view = 'entries';
   } else if (e === 'create-entry') {
     $editProfileSection.classList.add('hidden');
@@ -188,6 +192,7 @@ function swapWindow(e) {
     $entries.classList.add('hidden');
     $createEntries.classList.add('hidden');
     $createEntries.classList.remove('hidden');
+    $modalWindow.classList.add('hidden');
     data.view = 'create-entry';
 
   }
