@@ -9,6 +9,7 @@ var $photoUrl = document.querySelector('#photoUrl');
 var $entryImg = document.querySelector('img.entryImage');
 var $entryForm = document.querySelector('#entry-form');
 var $entryList = document.querySelector('#entry-list')
+var liNumber =0;
 
 
 function urlInputSet(e) {
@@ -203,11 +204,13 @@ function userEntryList(info) {
   var $entryInfoHeader = document.createElement('h3')
   var $entryNotes = document.createElement('p')
 
+  $entryListing.setAttribute('id', liNumber++)
 
   $entryColumnWrapper.setAttribute('class', 'column-half');
   $entryListing.appendChild($entryColumnWrapper);
 
   $entryImage.setAttribute('src', info.photoUrl)
+  $entryImage.setAttribute('data-view','user-option')
   $entryImage.setAttribute('alt', 'entry-pictures');
   $entryColumnWrapper.appendChild($entryImage);
 
@@ -265,3 +268,9 @@ function formInputFilled() {
     return false;
   }
 }
+
+document.addEventListener('click', function(e){
+
+  console.log(e.target.getAttribute('data-view'))
+
+});
