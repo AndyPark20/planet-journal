@@ -11,13 +11,18 @@ h2 {
   font-weight: lighter;
 }
 
+h3 {
+  font-family: 'Abril Fatface', cursive, Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+
 h4 {
   text-decoration: none;
 }
 
 img {
   width: 100%;
-  border: 1px solid black;
+  border-radius: 2%;
 }
 
 input {
@@ -52,6 +57,17 @@ a {
   text-decoration: none;
 }
 
+li {
+  margin-top: 3%;
+  display: flex;
+  text-align: left;
+}
+
+ol {
+  list-style-type: none;
+  padding-left: 0;
+}
+
 .profileLink {
   font-family: 'Abril Fatface', cursive, Arial, Helvetica, sans-serif;
   color: white;
@@ -59,6 +75,19 @@ a {
 }
 
 .editProfileSaveBtn {
+  width: 75px;
+  height: 30px;
+  color: white;
+  border: none;
+  border-radius: 5%;
+  font-family: 'Bebas Neue', cursive, Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  background-color: #547980;
+  font-size: 23px;
+  text-decoration: none;
+}
+
+.editEntrySaveBtn {
   width: 75px;
   height: 30px;
   color: white;
@@ -163,4 +192,9 @@ a.profileLink:last-child {
   background-color: #547980;
   font-size: 23px;
   text-decoration: none;
+}
+
+.entriesContent {
+  display: flex;
+  flex-direction: column;
 }

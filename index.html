@@ -22,8 +22,8 @@
         <div class="column-full header-background">
           <h2>Code Journal</h2>
           <div class="naviLink">
-          <a href="#" data-view="profile" class="profileLink">Profile</a>
-          <a href="#" data-view="entries" class="profileLink">Entries</a>
+            <a href="#" data-view="profile" class="profileLink">Profile</a>
+            <a href="#" data-view="entries" class="profileLink">Entries</a>
           </div>
         </div>
       </div>
@@ -72,7 +72,7 @@
 
   <section>
     <div class="container createEntries" data-view="create-entry">
-      <form  id="entry-form">
+      <form id="entry-form">
         <div class="column-full">
           <h1>Create Entry</h1>
         </div>
@@ -94,7 +94,7 @@
             <label for="notes">Notes</label><br />
             <textarea id="notes" name="notes" rows="6" cols="90" required></textarea>
             <div class="btnStyle">
-              <input type="submit" value="save" class="editProfileSaveBtn">
+              <input type="submit" value="save" class="editEntrySaveBtn" data-view="entries">
             </div>
           </div>
         </div>
@@ -105,9 +105,12 @@
   <main>
     <div class="container profilePage hidden" data-view="profile"></div>
     <div class="container entriesPage" data-view="entries">
-      <div class="column-full entries-style">
-        <h1>Entries</h1>
-        <input type="submit" value="NEW" class="entriesSaveBtn">
+      <div class="row entryRow">
+        <div class="column-full entries-style">
+          <h1>Entries</h1>
+          <input type="submit" value="NEW" class="entriesSaveBtn" data-view="create-entry">
+        </div>
+        <ol id="entry-list"></ol>
       </div>
     </div>
   </main>
