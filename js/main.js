@@ -236,10 +236,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
 
 
-
 document.addEventListener('click', function (e) {
   var dataView = e.target.getAttribute('data-view');
-  console.log(e.target.className)
+  console.log(e.target.getAttribute('data-view'))
 
   if (dataView === 'edit-profile') {
     swapWindow(dataView);
@@ -247,15 +246,13 @@ document.addEventListener('click', function (e) {
     swapWindow(dataView);
   } else if (dataView === 'entries' && formInputFilled() === true) {
     swapWindow(dataView);
+  } else if (dataView === "create-entry" && formInputFilled() === true){
+    swapWindow(dataView);
   }
-
-  if (e.target.className === 'entriesSaveBtn') {
-    swapWindow('create-entry');
-  }
-
 
 
 });
+
 
 function formInputFilled() {
   if (data.profile.avatarUrl.length !== 0 && data.profile.bio.length !== 0 && data.profile.fullName.length !== 0 && data.profile.location.length !== 0 && data.profile.username.length !== 0) {
