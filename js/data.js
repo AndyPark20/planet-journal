@@ -13,8 +13,8 @@ var data = {
 };
 
 
-var entry ={
-  photoUrl:'',
-  title:'',
-  note:''
-}
+  var entry = {
+    photoUrl: '',
+    title: '',
+    note: ''
+  }

@@ -8,6 +8,7 @@ var $createEntries = document.querySelector('.createEntries');
 var $photoUrl = document.querySelector('#photoUrl');
 var $entryImg = document.querySelector('img.entryImage');
 var $entryForm = document.querySelector('#entry-form');
+var $entryList = document.querySelector('#entry-list')
 
 
 function urlInputSet(e) {
@@ -41,26 +42,30 @@ $userForm.addEventListener('submit', function (e) {
 });
 
 $entryForm.addEventListener('submit', function (e) {
+
+
   e.preventDefault();
   entry.photoUrl = $entryForm.photoUrl.value;
   entry.title = $entryForm.title.value;
   entry.note = $entryForm.notes.value;
   data.entries.push(entry);
   $entryImg.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $entryList.prepend(userEntryList(entry));
   $entryForm.reset();
   swapWindow('entries');
 
-});
-
-window.addEventListener('beforeunload', function () {
-  var userData = JSON.stringify(data);
-  localStorage.setItem('inputData', userData);
 });
 
 var getData = localStorage.getItem('inputData');
 if (getData !== null) {
   data = JSON.parse(getData);
 }
+
+window.addEventListener('beforeunload', function () {
+  var userData = JSON.stringify(data);
+  localStorage.setItem('inputData', userData);
+});
+
 
 function renderElements() {
   var $masterDiv = document.createElement('div');
@@ -184,10 +189,9 @@ function swapWindow(e) {
 
 }
 
+
 function userEntryList(info) {
 
-  var $entriesMasterRow = document.querySelector('.entryRow');
-  var $entryOrderList = document.createElement('ol');
   var $entryListing = document.createElement('li');
   var $entryColumnWrapper = document.createElement('div');
   var $entryImage = document.createElement('img');
@@ -195,11 +199,9 @@ function userEntryList(info) {
   var $entryInfoHeader = document.createElement('h3')
   var $entryNotes = document.createElement('p')
 
-  $entriesMasterRow.appendChild($entryOrderList);
 
   $entryColumnWrapper.setAttribute('class', 'column-half');
   $entryListing.appendChild($entryColumnWrapper);
-  $entryOrderList.appendChild($entryListing);
 
   $entryImage.setAttribute('src', info.photoUrl)
   $entryImage.setAttribute('alt', 'entry-pictures');
@@ -214,7 +216,7 @@ function userEntryList(info) {
   $entryNotes.textContent = info.note;
   $informationColumnWrapper.appendChild($entryNotes);
 
-  return $entriesMasterRow;
+  return $entryListing;
 
 }
 
@@ -222,23 +224,22 @@ function userEntryList(info) {
 document.addEventListener('DOMContentLoaded', function (e) {
   if (data.profile.username === '') {
     swapWindow('edit-profile');
-  } else if (data.profile.username.length !== 0 && data.view!=='entries') {
+  } else if (data.profile.username.length !== 0 && data.view !== 'entries') {
     swapWindow('profile');
-  } else if (data.view ==='entries'){
+  } else if (data.view === 'entries') {
     swapWindow('entries');
   }
 
-    for (var i = data.entries.length - 1; i >= 0; i--) {
-      result = data.entries[i];
-      userEntryList(result);
+  for (var i = data.entries.length - 1; i >= 0; i--) {
+    result = data.entries[i];
+    $entryList.appendChild(userEntryList(result));
   }
 });
 
 
-
 document.addEventListener('click', function (e) {
   var dataView = e.target.getAttribute('data-view');
-  console.log(e.target.getAttribute('data-view'))
+
 
   if (dataView === 'edit-profile') {
     swapWindow(dataView);
@@ -246,10 +247,9 @@ document.addEventListener('click', function (e) {
     swapWindow(dataView);
   } else if (dataView === 'entries' && formInputFilled() === true) {
     swapWindow(dataView);
-  } else if (dataView === "create-entry" && formInputFilled() === true){
+  } else if (dataView === "create-entry" && formInputFilled() === true) {
     swapWindow(dataView);
   }
-
 
 });
 
