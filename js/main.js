@@ -42,7 +42,11 @@ $userForm.addEventListener('submit', function (e) {
 });
 
 $entryForm.addEventListener('submit', function (e) {
-
+  var entry = {
+    photoUrl: '',
+    title: '',
+    note: ''
+  }
 
   e.preventDefault();
   entry.photoUrl = $entryForm.photoUrl.value;
