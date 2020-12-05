@@ -12,6 +12,7 @@ var $entryList = document.querySelector('#entry-list')
 var $modalWindow = document.querySelector('.modal')
 var $modalAnimation = document.querySelector('.row-fixed-modal')
 var $deleteEntryData = document.querySelector('.deleteEntry');
+var $editEntryData = document.querySelector('.editEntry')
 var $deleteEntry = document.querySelectorAll('li')
 var $createEntryImage = document.querySelector('.entryImage')
 var inverseNumber = 0;
@@ -63,8 +64,9 @@ $entryForm.addEventListener('submit', function (e) {
   $entryList.prepend(userEntryList(entry));
 
   $entryForm.reset();
-
+  location.reload();
   swapWindow('entries');
+
 
 });
 
@@ -281,7 +283,9 @@ function formInputFilled() {
 document.addEventListener('click', function (e) {
   var convertedNumber = parseFloat(e.target.getAttribute('data-view'));
   $deleteEntryData.setAttribute('data-view', e.target.getAttribute('data-view'))
+  $editEntryData.setAttribute('data-view', e.target.getAttribute('data-view'))
 
+  console.log(convertedNumber)
   if (Number.isNaN(convertedNumber) === false) {
     $modalAnimation.classList.add('animation-modal')
     $modalWindow.classList.remove('hidden');
@@ -289,24 +293,25 @@ document.addEventListener('click', function (e) {
     $entryForm.title.value = data.entries[convertedNumber].title;
     $entryForm.notes.value = data.entries[convertedNumber].note;
     $createEntryImage.setAttribute('src', data.entries[convertedNumber].photoUrl);
+
   }
 
 
   if (e.target.className === 'editEntry') {
+    var convert = parseFloat(e.target.getAttribute('data-view'));
+    data.entries.splice(convert, 1)
     swapWindow('create-entry');
+
 
   }
 
   if (e.target.className === 'deleteEntry') {
     var convert = parseFloat(e.target.getAttribute('data-view'));
-    console.log(convert)
     data.entries.splice(convert, 1);
     $entryList.textContent = '';
-    for (var i=0; i<data.entries.length;i++) {
+    for (var i = data.entries.length - 1; i >= 0; i--) {
       var result = data.entries[i];
       $entryList.append(userEntryList(result));
-
-
     }
     location.reload();
     $modalWindow.classList.add('hidden');

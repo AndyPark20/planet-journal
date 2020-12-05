@@ -1,4 +1,3 @@
-
 h1 {
   font-family: 'Abril Fatface', cursive, Arial, Helvetica, sans-serif;
   font-size: 30px;
@@ -23,6 +22,7 @@ h4 {
 img {
   width: 100%;
   border-radius: 2%;
+  transition: all .5s ease-in-out;
 }
 
 input {
@@ -211,8 +211,8 @@ a.profileLink:last-child {
 
 .options {
   display:flex;
-  justify-content: space-evenly;
-  padding:0 25%;
+  justify-content: space-around;
+  padding: 0 25%;
 }
 
 
@@ -223,20 +223,19 @@ a.profileLink:last-child {
   }
 
 
-
  .row-fixed-modal{
-   display:flex;
-   flex-direction: column;
-   align-items:center;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
   width: 100%;
   height:100vh;
   background:rgba(0,0,0,0.0);
   z-index:1;
   top:0;
-  left:0.01%;
-
-  position:fixed;
-  transition: all 1s ease-in;
+  position: fixed;
+  right:1%;
+  left:.01%;
+  transition: all 3s ease-in;
 }
 
 .animation-modal {
