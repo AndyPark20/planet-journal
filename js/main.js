@@ -9,8 +9,9 @@ var $photoUrl = document.querySelector('#photoUrl');
 var $entryImg = document.querySelector('img.entryImage');
 var $entryForm = document.querySelector('#entry-form');
 var $entryList = document.querySelector('#entry-list')
-var $modalWindow =document.querySelector('.modal')
-var liNumber =0;
+var $modalWindow = document.querySelector('.modal')
+var $modalAnimation = document.querySelector('.row-fixed-modal')
+var inverseNumber=0;
 
 
 function urlInputSet(e) {
@@ -58,9 +59,13 @@ $entryForm.addEventListener('submit', function (e) {
   $entryImg.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryList.prepend(userEntryList(entry));
   $entryForm.reset();
+
+
   swapWindow('entries');
 
 });
+
+
 
 var getData = localStorage.getItem('inputData');
 if (getData !== null) {
@@ -184,7 +189,7 @@ function swapWindow(e) {
     $profile.classList.add('hidden');
     $entries.classList.remove('hidden');
     $createEntries.classList.add('hidden');
-    // $modalWindow.classList.add('hidden');
+    $modalWindow.classList.add('hidden');
     data.view = 'entries';
   } else if (e === 'create-entry') {
     $editProfileSection.classList.add('hidden');
@@ -199,39 +204,37 @@ function swapWindow(e) {
 
 }
 
-
 function userEntryList(info) {
 
-  var $entryListing = document.createElement('li');
-  var $entryColumnWrapper = document.createElement('div');
-  var $entryImage = document.createElement('img');
-  var $informationColumnWrapper = document.createElement('div');
-  var $entryInfoHeader = document.createElement('h3')
-  var $entryNotes = document.createElement('p')
+    var $entryListing = document.createElement('li');
+    var $entryColumnWrapper = document.createElement('div');
+    var $entryImage = document.createElement('img');
+    var $informationColumnWrapper = document.createElement('div');
+    var $entryInfoHeader = document.createElement('h3')
+    var $entryNotes = document.createElement('p')
 
-  $entryListing.setAttribute('id', liNumber++)
+    $entryListing.setAttribute('data-view', inverseNumber)
+    $entryColumnWrapper.setAttribute('class', 'column-half');
+    $entryListing.appendChild($entryColumnWrapper);
 
-  $entryColumnWrapper.setAttribute('class', 'column-half');
-  $entryListing.appendChild($entryColumnWrapper);
+    $entryImage.setAttribute('src', info.photoUrl)
+    $entryImage.setAttribute('data-view', 'user-option')
+    $entryImage.setAttribute('alt', 'entry-pictures');
+    $entryColumnWrapper.appendChild($entryImage);
 
-  $entryImage.setAttribute('src', info.photoUrl)
-  $entryImage.setAttribute('data-view','user-option')
-  $entryImage.setAttribute('alt', 'entry-pictures');
-  $entryColumnWrapper.appendChild($entryImage);
+    $informationColumnWrapper.setAttribute('class', 'column-half')
+    $informationColumnWrapper.setAttribute('data-view', inverseNumber++)
+    $entryListing.appendChild($informationColumnWrapper);
 
-  $informationColumnWrapper.setAttribute('class', 'column-half')
-  $entryListing.appendChild($informationColumnWrapper);
+    $entryInfoHeader.textContent = info.title;
+    $informationColumnWrapper.appendChild($entryInfoHeader);
 
-  $entryInfoHeader.textContent = info.title;
-  $informationColumnWrapper.appendChild($entryInfoHeader);
+    $entryNotes.textContent = info.note;
+    $informationColumnWrapper.appendChild($entryNotes);
 
-  $entryNotes.textContent = info.note;
-  $informationColumnWrapper.appendChild($entryNotes);
-
-  return $entryListing;
+    return $entryListing;
 
 }
-
 
 document.addEventListener('DOMContentLoaded', function (e) {
   if (data.profile.username === '') {
@@ -242,16 +245,15 @@ document.addEventListener('DOMContentLoaded', function (e) {
     swapWindow('entries');
   }
 
-  for (var i = data.entries.length - 1; i >= 0; i--) {
+  for (var i = 0; i < data.entries.length; i++) {
     result = data.entries[i];
-    $entryList.appendChild(userEntryList(result));
+    $entryList.prepend(userEntryList(result));
   }
 });
 
 
 document.addEventListener('click', function (e) {
   var dataView = e.target.getAttribute('data-view');
-
 
   if (dataView === 'edit-profile') {
     swapWindow(dataView);
@@ -274,8 +276,24 @@ function formInputFilled() {
   }
 }
 
-document.addEventListener('click', function(e){
+document.addEventListener('click', function (e) {
+  var convertedNumber = parseFloat(e.target.getAttribute('data-view'));
 
-  console.log(e.target.getAttribute('data-view'))
+  if (Number.isNaN(convertedNumber) === false) {
+    $modalAnimation.classList.add('animation-modal')
+    $modalWindow.classList.remove('hidden');
+    $entryForm.photoUrl.value = data.entries[convertedNumber].photoUrl;
+    $entryForm.title.value = data.entries[convertedNumber].title;
+    $entryForm.notes.value =data.entries[convertedNumber].note;
+  }
 
+
+  if (e.target.className === 'editEntry') {
+    swapWindow('create-entry');
+  }
+
+  if (e.target.className ==='deleteEntry'){
+
+    $modalWindow.classList.add('hidden');
+  }
 });

@@ -233,7 +233,7 @@ a.profileLink:last-child {
   z-index:1;
   top:0;
   position:absolute;
-  transition: 1.0s
+  transition: all 1s ease-in;
 }
 
 .animation-modal {
