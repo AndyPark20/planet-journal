@@ -212,6 +212,7 @@ a.profileLink:last-child {
 .options {
   display:flex;
   justify-content: space-evenly;
+  padding:0 25%;
 }
 
 
@@ -232,7 +233,9 @@ a.profileLink:last-child {
   background:rgba(0,0,0,0.0);
   z-index:1;
   top:0;
-  position:absolute;
+  left:0.01%;
+
+  position:fixed;
   transition: all 1s ease-in;
 }
 

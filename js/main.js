@@ -12,8 +12,9 @@ var $entryList = document.querySelector('#entry-list')
 var $modalWindow = document.querySelector('.modal')
 var $modalAnimation = document.querySelector('.row-fixed-modal')
 var $deleteEntryData = document.querySelector('.deleteEntry');
-var $deleteEntry =document.querySelectorAll('li')
-var inverseNumber=0;
+var $deleteEntry = document.querySelectorAll('li')
+var $createEntryImage = document.querySelector('.entryImage')
+var inverseNumber = 0;
 
 
 function urlInputSet(e) {
@@ -60,14 +61,12 @@ $entryForm.addEventListener('submit', function (e) {
   data.entries.push(entry);
   $entryImg.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryList.prepend(userEntryList(entry));
-  $entryForm.reset();
 
+  $entryForm.reset();
 
   swapWindow('entries');
 
 });
-
-
 
 var getData = localStorage.getItem('inputData');
 if (getData !== null) {
@@ -201,40 +200,39 @@ function swapWindow(e) {
     $createEntries.classList.remove('hidden');
     $modalWindow.classList.add('hidden');
     data.view = 'create-entry';
-
   }
 
 }
 
 function userEntryList(info) {
 
-    var $entryListing = document.createElement('li');
-    var $entryColumnWrapper = document.createElement('div');
-    var $entryImage = document.createElement('img');
-    var $informationColumnWrapper = document.createElement('div');
-    var $entryInfoHeader = document.createElement('h3')
-    var $entryNotes = document.createElement('p')
+  var $entryListing = document.createElement('li');
+  var $entryColumnWrapper = document.createElement('div');
+  var $entryImage = document.createElement('img');
+  var $informationColumnWrapper = document.createElement('div');
+  var $entryInfoHeader = document.createElement('h3')
+  var $entryNotes = document.createElement('p')
 
-    $entryListing.setAttribute('data-view', inverseNumber)
-    $entryColumnWrapper.setAttribute('class', 'column-half');
-    $entryListing.appendChild($entryColumnWrapper);
+  $entryListing.setAttribute('data-view', inverseNumber)
+  $entryColumnWrapper.setAttribute('class', 'column-half');
+  $entryListing.appendChild($entryColumnWrapper);
 
-    $entryImage.setAttribute('src', info.photoUrl)
-    $entryImage.setAttribute('data-view', 'user-option')
-    $entryImage.setAttribute('alt', 'entry-pictures');
-    $entryColumnWrapper.appendChild($entryImage);
+  $entryImage.setAttribute('src', info.photoUrl)
+  $entryImage.setAttribute('data-view', 'user-option')
+  $entryImage.setAttribute('alt', 'entry-pictures');
+  $entryColumnWrapper.appendChild($entryImage);
 
-    $informationColumnWrapper.setAttribute('class', 'column-half')
-    $informationColumnWrapper.setAttribute('data-view', inverseNumber++)
-    $entryListing.appendChild($informationColumnWrapper);
+  $informationColumnWrapper.setAttribute('class', 'column-half')
+  $informationColumnWrapper.setAttribute('data-view', inverseNumber++)
+  $entryListing.appendChild($informationColumnWrapper);
 
-    $entryInfoHeader.textContent = info.title;
-    $informationColumnWrapper.appendChild($entryInfoHeader);
+  $entryInfoHeader.textContent = info.title;
+  $informationColumnWrapper.appendChild($entryInfoHeader);
 
-    $entryNotes.textContent = info.note;
-    $informationColumnWrapper.appendChild($entryNotes);
+  $entryNotes.textContent = info.note;
+  $informationColumnWrapper.appendChild($entryNotes);
 
-    return $entryListing;
+  return $entryListing;
 
 }
 
@@ -282,31 +280,35 @@ function formInputFilled() {
 
 document.addEventListener('click', function (e) {
   var convertedNumber = parseFloat(e.target.getAttribute('data-view'));
-  $deleteEntryData.setAttribute('data-view',e.target.getAttribute('data-view'))
+  $deleteEntryData.setAttribute('data-view', e.target.getAttribute('data-view'))
 
   if (Number.isNaN(convertedNumber) === false) {
     $modalAnimation.classList.add('animation-modal')
     $modalWindow.classList.remove('hidden');
     $entryForm.photoUrl.value = data.entries[convertedNumber].photoUrl;
     $entryForm.title.value = data.entries[convertedNumber].title;
-    $entryForm.notes.value =data.entries[convertedNumber].note;
+    $entryForm.notes.value = data.entries[convertedNumber].note;
+    $createEntryImage.setAttribute('src', data.entries[convertedNumber].photoUrl);
   }
 
 
   if (e.target.className === 'editEntry') {
-    // swapWindow('create-entry');
+    swapWindow('create-entry');
 
   }
 
-  if (e.target.className ==='deleteEntry'){
+  if (e.target.className === 'deleteEntry') {
     var convert = parseFloat(e.target.getAttribute('data-view'));
-    data.entries.splice(convert,1);
-    $entryList.textContent='';
-    for (var i=data.entries.length-1; i>=0;i--){
-        var result =data.entries[i];
+    console.log(convert)
+    data.entries.splice(convert, 1);
+    $entryList.textContent = '';
+    for (var i=0; i<data.entries.length;i++) {
+      var result = data.entries[i];
       $entryList.append(userEntryList(result));
-    }
 
+
+    }
+    location.reload();
     $modalWindow.classList.add('hidden');
   }
 });
