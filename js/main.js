@@ -11,6 +11,8 @@ var $entryForm = document.querySelector('#entry-form');
 var $entryList = document.querySelector('#entry-list')
 var $modalWindow = document.querySelector('.modal')
 var $modalAnimation = document.querySelector('.row-fixed-modal')
+var $deleteEntryData = document.querySelector('.deleteEntry');
+var $deleteEntry =document.querySelectorAll('li')
 var inverseNumber=0;
 
 
@@ -249,6 +251,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
     result = data.entries[i];
     $entryList.prepend(userEntryList(result));
   }
+
+
 });
 
 
@@ -278,6 +282,7 @@ function formInputFilled() {
 
 document.addEventListener('click', function (e) {
   var convertedNumber = parseFloat(e.target.getAttribute('data-view'));
+  $deleteEntryData.setAttribute('data-view',e.target.getAttribute('data-view'))
 
   if (Number.isNaN(convertedNumber) === false) {
     $modalAnimation.classList.add('animation-modal')
@@ -289,10 +294,18 @@ document.addEventListener('click', function (e) {
 
 
   if (e.target.className === 'editEntry') {
-    swapWindow('create-entry');
+    // swapWindow('create-entry');
+
   }
 
   if (e.target.className ==='deleteEntry'){
+    var convert = parseFloat(e.target.getAttribute('data-view'));
+    data.entries.splice(convert,1);
+    $entryList.textContent='';
+    for (var i=data.entries.length-1; i>=0;i--){
+        var result =data.entries[i];
+      $entryList.append(userEntryList(result));
+    }
 
     $modalWindow.classList.add('hidden');
   }
