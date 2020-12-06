@@ -3,6 +3,7 @@
 }
 
 .container {
+  max-height:100vh;
   max-width: 575px;
   margin: 0 auto;
   padding: 0 1.5rem;
@@ -31,10 +32,22 @@
   .column-half {
     width: 50%;
   }
+  img:hover {
+    transform: scale(1.1);
+  }
+
+
 }
 
 @media screen and (max-width: 767px) {
   li {
     flex-direction: column;
+  }
+
+  .container {
+    max-width: 900px;
+  }
+  img:hover {
+    transform: scale(.8);
   }
 }

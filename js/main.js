@@ -9,6 +9,13 @@ var $photoUrl = document.querySelector('#photoUrl');
 var $entryImg = document.querySelector('img.entryImage');
 var $entryForm = document.querySelector('#entry-form');
 var $entryList = document.querySelector('#entry-list')
+var $modalWindow = document.querySelector('.modal')
+var $modalAnimation = document.querySelector('.row-fixed-modal')
+var $deleteEntryData = document.querySelector('.deleteEntry');
+var $editEntryData = document.querySelector('.editEntry')
+var $deleteEntry = document.querySelectorAll('li')
+var $createEntryImage = document.querySelector('.entryImage')
+var inverseNumber = 0;
 
 
 function urlInputSet(e) {
@@ -55,8 +62,11 @@ $entryForm.addEventListener('submit', function (e) {
   data.entries.push(entry);
   $entryImg.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryList.prepend(userEntryList(entry));
+
   $entryForm.reset();
+  location.reload();
   swapWindow('entries');
+
 
 });
 
@@ -155,6 +165,7 @@ function swapWindow(e) {
     $profile.classList.add('hidden');
     $entries.classList.add('hidden');
     $createEntries.classList.add('hidden');
+    $modalWindow.classList.add('hidden');
     $userForm.username.value = data.profile.username;
     $userForm.fullName.value = data.profile.fullName;
     $userForm.location.value = data.profile.location;
@@ -173,6 +184,7 @@ function swapWindow(e) {
     $profile.classList.remove('hidden');
     $entries.classList.add('hidden');
     $createEntries.classList.add('hidden');
+    $modalWindow.classList.add('hidden');
     data.view = 'profile';
     renderElements();
   } else if (e === 'entries') {
@@ -180,6 +192,7 @@ function swapWindow(e) {
     $profile.classList.add('hidden');
     $entries.classList.remove('hidden');
     $createEntries.classList.add('hidden');
+    $modalWindow.classList.add('hidden');
     data.view = 'entries';
   } else if (e === 'create-entry') {
     $editProfileSection.classList.add('hidden');
@@ -187,12 +200,11 @@ function swapWindow(e) {
     $entries.classList.add('hidden');
     $createEntries.classList.add('hidden');
     $createEntries.classList.remove('hidden');
+    $modalWindow.classList.add('hidden');
     data.view = 'create-entry';
-
   }
 
 }
-
 
 function userEntryList(info) {
 
@@ -203,15 +215,17 @@ function userEntryList(info) {
   var $entryInfoHeader = document.createElement('h3')
   var $entryNotes = document.createElement('p')
 
-
+  $entryListing.setAttribute('data-view', inverseNumber)
   $entryColumnWrapper.setAttribute('class', 'column-half');
   $entryListing.appendChild($entryColumnWrapper);
 
   $entryImage.setAttribute('src', info.photoUrl)
+  $entryImage.setAttribute('data-view', 'user-option')
   $entryImage.setAttribute('alt', 'entry-pictures');
   $entryColumnWrapper.appendChild($entryImage);
 
   $informationColumnWrapper.setAttribute('class', 'column-half')
+  $informationColumnWrapper.setAttribute('data-view', inverseNumber++)
   $entryListing.appendChild($informationColumnWrapper);
 
   $entryInfoHeader.textContent = info.title;
@@ -224,7 +238,6 @@ function userEntryList(info) {
 
 }
 
-
 document.addEventListener('DOMContentLoaded', function (e) {
   if (data.profile.username === '') {
     swapWindow('edit-profile');
@@ -234,16 +247,17 @@ document.addEventListener('DOMContentLoaded', function (e) {
     swapWindow('entries');
   }
 
-  for (var i = data.entries.length - 1; i >= 0; i--) {
+  for (var i = 0; i < data.entries.length; i++) {
     result = data.entries[i];
-    $entryList.appendChild(userEntryList(result));
+    $entryList.prepend(userEntryList(result));
   }
+
+
 });
 
 
 document.addEventListener('click', function (e) {
   var dataView = e.target.getAttribute('data-view');
-
 
   if (dataView === 'edit-profile') {
     swapWindow(dataView);
@@ -265,3 +279,41 @@ function formInputFilled() {
     return false;
   }
 }
+
+document.addEventListener('click', function (e) {
+  var convertedNumber = parseFloat(e.target.getAttribute('data-view'));
+  $deleteEntryData.setAttribute('data-view', e.target.getAttribute('data-view'))
+  $editEntryData.setAttribute('data-view', e.target.getAttribute('data-view'))
+
+  console.log(convertedNumber)
+  if (Number.isNaN(convertedNumber) === false) {
+    $modalAnimation.classList.add('animation-modal')
+    $modalWindow.classList.remove('hidden');
+    $entryForm.photoUrl.value = data.entries[convertedNumber].photoUrl;
+    $entryForm.title.value = data.entries[convertedNumber].title;
+    $entryForm.notes.value = data.entries[convertedNumber].note;
+    $createEntryImage.setAttribute('src', data.entries[convertedNumber].photoUrl);
+
+  }
+
+
+  if (e.target.className === 'editEntry') {
+    var convert = parseFloat(e.target.getAttribute('data-view'));
+    data.entries.splice(convert, 1)
+    swapWindow('create-entry');
+
+
+  }
+
+  if (e.target.className === 'deleteEntry') {
+    var convert = parseFloat(e.target.getAttribute('data-view'));
+    data.entries.splice(convert, 1);
+    $entryList.textContent = '';
+    for (var i = data.entries.length - 1; i >= 0; i--) {
+      var result = data.entries[i];
+      $entryList.append(userEntryList(result));
+    }
+    location.reload();
+    $modalWindow.classList.add('hidden');
+  }
+});
