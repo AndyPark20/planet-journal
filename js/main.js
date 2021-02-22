@@ -16,7 +16,7 @@ var $editEntryData = document.querySelector('.editEntry');
 var $deleteEntry = document.querySelectorAll('li');
 var $createEntryImage = document.querySelector('.entryImage');
 var $search = document.querySelector('.searchInput');
-var $magnifying = document.querySelector('.searchIcon');
+var $magnifying = document.querySelector('.search');
 var inverseNumber = 0;
 
 function urlInputSet(e) {
@@ -208,8 +208,7 @@ function swapWindow(e) {
 
 }
 
-function userEntryList(info) {
-
+function userEntryList(info, index) {
   var $entryListing = document.createElement('li');
   var $entryColumnWrapper = document.createElement('div');
   var $entryImage = document.createElement('img');
@@ -218,7 +217,7 @@ function userEntryList(info) {
   var $entryNotes = document.createElement('p');
   var $editBtn = document.createElement('input');
 
-  $entryListing.setAttribute('data-view', inverseNumber);
+  $entryListing.setAttribute('data-view', index);
   $entryColumnWrapper.setAttribute('class', 'column-half');
   $entryListing.appendChild($entryColumnWrapper);
 
@@ -240,7 +239,7 @@ function userEntryList(info) {
   $editBtn.setAttribute('type', 'button');
   $editBtn.setAttribute('value', 'Options');
   $editBtn.setAttribute('class', 'optionBtn');
-  $editBtn.setAttribute('data-view', inverseNumber++);
+  $editBtn.setAttribute('data-view', index);
 
   $informationColumnWrapper.appendChild($editBtn);
 
@@ -259,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
   for (var i = 0; i < data.entries.length; i++) {
     result = data.entries[i];
-    $entryList.prepend(userEntryList(result));
+    $entryList.prepend(userEntryList(result, i));
   }
 
 });
@@ -279,15 +278,19 @@ document.addEventListener('click', function (e) {
 
 });
 
-document.addEventListener('keyup', function (e) {
-  // if ($magnifying )
-  if (e.keyCode === 13) {
+$magnifying.addEventListener('keyup', function (e) {
+  $entryList.textContent = '';
+  if (e.target.value !== '') {
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].title.toUpperCase() === e.target.value.toUpperCase()) {
-        userEntryList(data.entries[i]);
+        $entryList.textContent = '';
+        $entryList.prepend(userEntryList(data.entries[i], i));
       }
     }
-
+  } else if (!e.target.value) {
+    for (var j = 0; j < data.entries.length; j++) {
+      $entryList.prepend(userEntryList(data.entries[j], j));
+    }
   }
 });
 
@@ -327,7 +330,7 @@ document.addEventListener('click', function (e) {
     $entryList.textContent = '';
     for (var i = data.entries.length - 1; i >= 0; i--) {
       var result = data.entries[i];
-      $entryList.append(userEntryList(result));
+      $entryList.append(userEntryList(result, i));
     }
     location.reload();
     $modalWindow.classList.add('hidden');
