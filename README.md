@@ -9,7 +9,7 @@ Planet Journal is a dynamic application that allow users to edit, modify, and sa
 * CSS3
 * HTML5
 
-Live Demo:
+Live demo:
 ---
 https://andypark20.github.io/planet-journal/
 
