@@ -115,10 +115,15 @@ ol {
 .naviLink {
   display: flex;
   padding-left: 3%;
+  justify-content: space-evenly;
+  align-items:center;
 }
 
-a.profileLink:last-child {
-  margin-left: 15%;
+.profileLinkLast {
+  margin-left: 5%;
+  font-family: 'Abril Fatface', cursive, Arial, Helvetica, sans-serif;
+  color: white;
+  font-weight: lighter;
 }
 
 .linkStyle {
@@ -309,3 +314,37 @@ a.profileLink:last-child {
     color:white;
     background-color:#547980;
   }
+
+  .searchInput i {
+  position:absolute;
+  cursor: pointer;
+  margin-top:7px;
+  margin-left:2px;
+  font-size: 20px;
+}
+
+.searchInput{
+  padding-left:3%;
+}
+
+.search {
+  padding-left:22px;
+}
+
+input.search {
+  outline:none;
+}
+
+.center{
+  display:flex;
+}
+
+@media screen and (max-width:375px) {
+  h2 {
+    font-size:.8rem;
+  }
+
+  a.profileLink, a.profileLinkLast {
+    font-size:.7rem;
+  }
+}
