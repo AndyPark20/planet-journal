@@ -22,5 +22,4 @@ Features:
 ScreenShot:
 ---
 ![image](https://user-images.githubusercontent.com/69870979/108779500-cf743b80-751b-11eb-8812-2d4269bde157.png)
-![image](https://user-images.githubusercontent.com/69870979/108779610-fb8fbc80-751b-11eb-9a30-31ac5192330f.png)
-![image](https://user-images.githubusercontent.com/69870979/108779659-0e09f600-751c-11eb-88a7-060b848cc119.png)
+![image](https://user-images.githubusercontent.com/69870979/108779755-3d206780-751c-11eb-8ce3-120b85e75ccb.png)
