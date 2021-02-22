@@ -1,7 +1,8 @@
 h1 {
   font-family: 'Abril Fatface', cursive, Arial, Helvetica, sans-serif;
-  font-size: 30px;
+  font-size: 3rem;
   font-weight: lighter;
+  color:  #202020;
 }
 
 h2 {
@@ -13,6 +14,7 @@ h2 {
 h3 {
   font-family: 'Abril Fatface', cursive, Arial, Helvetica, sans-serif;
   font-weight: lighter;
+  font-size:2.0rem;
 }
 
 h4 {
@@ -31,6 +33,10 @@ input {
   border: 1px solid black;
 }
 
+html{
+  background-color:#f4f4f4;
+}
+
 label {
   font-family: 'Bebas Neue', cursive, Arial, Helvetica, sans-serif;
   font-size: 22px;
@@ -42,7 +48,7 @@ textarea {
 }
 
 header {
-  background-color: #547980;
+  background-color: #202020;
 }
 
 i {
@@ -50,7 +56,8 @@ i {
 }
 
 p {
-  font-size: 20px;
+  font-family: Helvetica,Arial, sans-serif;
+  font-size: 1.0rem;
 }
 
 a {
@@ -82,9 +89,14 @@ ol {
   border-radius: 5%;
   font-family: 'Bebas Neue', cursive, Arial, Helvetica, sans-serif;
   font-weight: lighter;
-  background-color: #547980;
+  background-color: #202020;
   font-size: 23px;
   text-decoration: none;
+}
+
+.editProfileSaveBtn:hover {
+  transition: 0.5s;
+  background-color:#547980;
 }
 
 .editEntrySaveBtn {
@@ -118,9 +130,14 @@ a.profileLink:last-child {
   border-radius: 5%;
   font-family: 'Bebas Neue', cursive, Arial, Helvetica, sans-serif;
   font-weight: lighter;
-  background-color: #547980;
+  background-color: #202020;
   font-size: 23px;
   text-decoration: none;
+}
+
+.linkStyle:hover {
+  background-color: #547980;
+    transition: 0.5s;
 }
 
 .btnStyle {
@@ -186,12 +203,16 @@ a.profileLink:last-child {
   height: 30px;
   color: white;
   border: none;
-  border-radius: 5%;
-  font-family: 'Bebas Neue', cursive, Arial, Helvetica, sans-serif;
+  font-family: 'Abril Fatface', cursive, Arial, Helvetica, sans-serif;
   font-weight: lighter;
-  background-color: #547980;
-  font-size: 23px;
+  background-color: #202020;
+  font-size: 1rem;
   text-decoration: none;
+}
+
+.entriesSaveBtn:hover {
+   transition: 0.5s;
+  background-color:#547980;
 }
 
 .entriesContent {
@@ -203,16 +224,17 @@ a.profileLink:last-child {
   display:flex;
   flex-direction:column;
   justify-content: center;
-  border:1px solid black;
-  margin-top:25%;
+  border:3px solid black;
+  margin-top:15%;
   text-align:center;
   background-color:white;
+  max-width:85%;
 }
 
 .options {
   display:flex;
   justify-content: space-around;
-  padding: 0 25%;
+  padding: 2% 0%;;
 }
 
 
@@ -257,7 +279,7 @@ a.profileLink:last-child {
   }
 
   .editEntry {
-    background-color:#1e3d59;
+    background-color:#202020;
   }
 
   .deleteEntry {
@@ -265,7 +287,7 @@ a.profileLink:last-child {
   }
 
   .editEntry:hover {
-    background-color:blue;
+    background-color:#344277;
     transform: scale(1.3);
 
   }
@@ -274,4 +296,16 @@ a.profileLink:last-child {
      background-color:red;
     transform: scale(1.3);
 
+  }
+
+  .optionBtn {
+    cursor:pointer;
+    width:20%;
+    background-color:rgba(0,0,0,0.0);
+    transition:0.5s;
+  }
+
+  .optionBtn:hover {
+    color:white;
+    background-color:#547980;
   }

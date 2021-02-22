@@ -8,15 +8,14 @@ var $createEntries = document.querySelector('.createEntries');
 var $photoUrl = document.querySelector('#photoUrl');
 var $entryImg = document.querySelector('img.entryImage');
 var $entryForm = document.querySelector('#entry-form');
-var $entryList = document.querySelector('#entry-list')
-var $modalWindow = document.querySelector('.modal')
-var $modalAnimation = document.querySelector('.row-fixed-modal')
+var $entryList = document.querySelector('#entry-list');
+var $modalWindow = document.querySelector('.modal');
+var $modalAnimation = document.querySelector('.row-fixed-modal');
 var $deleteEntryData = document.querySelector('.deleteEntry');
-var $editEntryData = document.querySelector('.editEntry')
-var $deleteEntry = document.querySelectorAll('li')
-var $createEntryImage = document.querySelector('.entryImage')
+var $editEntryData = document.querySelector('.editEntry');
+var $deleteEntry = document.querySelectorAll('li');
+var $createEntryImage = document.querySelector('.entryImage');
 var inverseNumber = 0;
-
 
 function urlInputSet(e) {
   if ($urlInput.value === '') {
@@ -53,7 +52,7 @@ $entryForm.addEventListener('submit', function (e) {
     photoUrl: '',
     title: '',
     note: ''
-  }
+  };
 
   e.preventDefault();
   entry.photoUrl = $entryForm.photoUrl.value;
@@ -67,7 +66,6 @@ $entryForm.addEventListener('submit', function (e) {
   location.reload();
   swapWindow('entries');
 
-
 });
 
 var getData = localStorage.getItem('inputData');
@@ -79,7 +77,6 @@ window.addEventListener('beforeunload', function () {
   var userData = JSON.stringify(data);
   localStorage.setItem('inputData', userData);
 });
-
 
 function renderElements() {
   var $masterDiv = document.createElement('div');
@@ -212,20 +209,20 @@ function userEntryList(info) {
   var $entryColumnWrapper = document.createElement('div');
   var $entryImage = document.createElement('img');
   var $informationColumnWrapper = document.createElement('div');
-  var $entryInfoHeader = document.createElement('h3')
-  var $entryNotes = document.createElement('p')
+  var $entryInfoHeader = document.createElement('h3');
+  var $entryNotes = document.createElement('p');
+  var $editBtn = document.createElement('input');
 
-  $entryListing.setAttribute('data-view', inverseNumber)
+  $entryListing.setAttribute('data-view', inverseNumber);
   $entryColumnWrapper.setAttribute('class', 'column-half');
   $entryListing.appendChild($entryColumnWrapper);
 
-  $entryImage.setAttribute('src', info.photoUrl)
-  $entryImage.setAttribute('data-view', 'user-option')
+  $entryImage.setAttribute('src', info.photoUrl);
+  $entryImage.setAttribute('data-view', 'user-option');
   $entryImage.setAttribute('alt', 'entry-pictures');
   $entryColumnWrapper.appendChild($entryImage);
 
-  $informationColumnWrapper.setAttribute('class', 'column-half')
-  $informationColumnWrapper.setAttribute('data-view', inverseNumber++)
+  $informationColumnWrapper.setAttribute('class', 'column-half');
   $entryListing.appendChild($informationColumnWrapper);
 
   $entryInfoHeader.textContent = info.title;
@@ -233,6 +230,14 @@ function userEntryList(info) {
 
   $entryNotes.textContent = info.note;
   $informationColumnWrapper.appendChild($entryNotes);
+
+  $editBtn.setAttribute('class', 'entry');
+  $editBtn.setAttribute('type', 'button');
+  $editBtn.setAttribute('value', 'Options');
+  $editBtn.setAttribute('class', 'optionBtn');
+  $editBtn.setAttribute('data-view', inverseNumber++);
+
+  $informationColumnWrapper.appendChild($editBtn);
 
   return $entryListing;
 
@@ -252,9 +257,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     $entryList.prepend(userEntryList(result));
   }
 
-
 });
-
 
 document.addEventListener('click', function (e) {
   var dataView = e.target.getAttribute('data-view');
@@ -265,12 +268,11 @@ document.addEventListener('click', function (e) {
     swapWindow(dataView);
   } else if (dataView === 'entries' && formInputFilled() === true) {
     swapWindow(dataView);
-  } else if (dataView === "create-entry" && formInputFilled() === true) {
+  } else if (dataView === 'create-entry' && formInputFilled() === true) {
     swapWindow(dataView);
   }
 
 });
-
 
 function formInputFilled() {
   if (data.profile.avatarUrl.length !== 0 && data.profile.bio.length !== 0 && data.profile.fullName.length !== 0 && data.profile.location.length !== 0 && data.profile.username.length !== 0) {
@@ -282,12 +284,12 @@ function formInputFilled() {
 
 document.addEventListener('click', function (e) {
   var convertedNumber = parseFloat(e.target.getAttribute('data-view'));
-  $deleteEntryData.setAttribute('data-view', e.target.getAttribute('data-view'))
-  $editEntryData.setAttribute('data-view', e.target.getAttribute('data-view'))
+  $deleteEntryData.setAttribute('data-view', e.target.getAttribute('data-view'));
+  $editEntryData.setAttribute('data-view', e.target.getAttribute('data-view'));
 
-  console.log(convertedNumber)
+  console.log(convertedNumber);
   if (Number.isNaN(convertedNumber) === false) {
-    $modalAnimation.classList.add('animation-modal')
+    $modalAnimation.classList.add('animation-modal');
     $modalWindow.classList.remove('hidden');
     $entryForm.photoUrl.value = data.entries[convertedNumber].photoUrl;
     $entryForm.title.value = data.entries[convertedNumber].title;
@@ -296,12 +298,10 @@ document.addEventListener('click', function (e) {
 
   }
 
-
   if (e.target.className === 'editEntry') {
     var convert = parseFloat(e.target.getAttribute('data-view'));
-    data.entries.splice(convert, 1)
+    data.entries.splice(convert, 1);
     swapWindow('create-entry');
-
 
   }
 
