@@ -15,6 +15,8 @@ var $deleteEntryData = document.querySelector('.deleteEntry');
 var $editEntryData = document.querySelector('.editEntry');
 var $deleteEntry = document.querySelectorAll('li');
 var $createEntryImage = document.querySelector('.entryImage');
+var $search = document.querySelector('.searchInput');
+var $magnifying = document.querySelector('.searchIcon');
 var inverseNumber = 0;
 
 function urlInputSet(e) {
@@ -182,6 +184,7 @@ function swapWindow(e) {
     $entries.classList.add('hidden');
     $createEntries.classList.add('hidden');
     $modalWindow.classList.add('hidden');
+    $search.classList.add('hidden');
     data.view = 'profile';
     renderElements();
   } else if (e === 'entries') {
@@ -190,6 +193,7 @@ function swapWindow(e) {
     $entries.classList.remove('hidden');
     $createEntries.classList.add('hidden');
     $modalWindow.classList.add('hidden');
+    $search.classList.remove('hidden');
     data.view = 'entries';
   } else if (e === 'create-entry') {
     $editProfileSection.classList.add('hidden');
@@ -198,6 +202,7 @@ function swapWindow(e) {
     $createEntries.classList.add('hidden');
     $createEntries.classList.remove('hidden');
     $modalWindow.classList.add('hidden');
+    $search.classList.add('hidden');
     data.view = 'create-entry';
   }
 
@@ -274,6 +279,18 @@ document.addEventListener('click', function (e) {
 
 });
 
+document.addEventListener('keyup', function (e) {
+  // if ($magnifying )
+  if (e.keyCode === 13) {
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].title.toUpperCase() === e.target.value.toUpperCase()) {
+        userEntryList(data.entries[i]);
+      }
+    }
+
+  }
+});
+
 function formInputFilled() {
   if (data.profile.avatarUrl.length !== 0 && data.profile.bio.length !== 0 && data.profile.fullName.length !== 0 && data.profile.location.length !== 0 && data.profile.username.length !== 0) {
     return true;
@@ -287,7 +304,6 @@ document.addEventListener('click', function (e) {
   $deleteEntryData.setAttribute('data-view', e.target.getAttribute('data-view'));
   $editEntryData.setAttribute('data-view', e.target.getAttribute('data-view'));
 
-  console.log(convertedNumber);
   if (Number.isNaN(convertedNumber) === false) {
     $modalAnimation.classList.add('animation-modal');
     $modalWindow.classList.remove('hidden');
