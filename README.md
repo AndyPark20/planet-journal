@@ -1,7 +1,7 @@
 # 🪐🌎Planet-journal
 ----
 
-Planet Journal is a dynamic application that allow users to edit, moddify, and save their notes about discovered planets. 
+Planet Journal is a dynamic application that allow users to edit, modify, and save their notes about discovered planets. 
 
 # Tools used to build this project:
 ---
