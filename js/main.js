@@ -33,7 +33,7 @@ function urlInputSet(e) {
   }
 
 }
-console.log('test');
+
 $urlInput.addEventListener('input', urlInputSet);
 $photoUrl.addEventListener('input', urlInputSet);
 
@@ -70,15 +70,15 @@ $entryForm.addEventListener('submit', function (e) {
 
 });
 
-var getData = localStorage.getItem('inputData');
-if (getData !== null) {
-  data = JSON.parse(getData);
-}
+// var getData = localStorage.getItem('inputData');
+// if (getData !== null) {
+//   data = JSON.parse(getData);
+// }
 
-window.addEventListener('beforeunload', function () {
-  var userData = JSON.stringify(data);
-  localStorage.setItem('inputData', userData);
-});
+// window.addEventListener('beforeunload', function () {
+//   var userData = JSON.stringify(data);
+//   localStorage.setItem('inputData', userData);
+// });
 
 function renderElements() {
   var $masterDiv = document.createElement('div');
