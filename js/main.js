@@ -33,7 +33,7 @@ function urlInputSet(e) {
   }
 
 }
-
+console.log('test');
 $urlInput.addEventListener('input', urlInputSet);
 $photoUrl.addEventListener('input', urlInputSet);
 
