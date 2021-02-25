@@ -211,7 +211,6 @@ function swapWindow(e) {
 }
 
 function userEntryList(info, index) {
-  console.log('test');
   var $entryListing = document.createElement('li');
   var $entryColumnWrapper = document.createElement('div');
   var $entryImage = document.createElement('img');
