@@ -13,11 +13,9 @@ var $modalWindow = document.querySelector('.modal');
 var $modalAnimation = document.querySelector('.row-fixed-modal');
 var $deleteEntryData = document.querySelector('.deleteEntry');
 var $editEntryData = document.querySelector('.editEntry');
-var $deleteEntry = document.querySelectorAll('li');
 var $createEntryImage = document.querySelector('.entryImage');
 var $search = document.querySelector('.searchInput');
 var $magnifying = document.querySelector('.search');
-var inverseNumber = 0;
 
 function urlInputSet(e) {
   if ($urlInput.value === '') {
@@ -62,10 +60,14 @@ $entryForm.addEventListener('submit', function (e) {
   entry.note = $entryForm.notes.value;
   data.entries.push(entry);
   $entryImg.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $entryList.prepend(userEntryList(entry));
-
+  if (data.entries.length !== 0) {
+    $entryList.textContent = '';
+    for (var i = 0; i < data.entries.length; i++) {
+      $entryList.prepend(userEntryList(data.entries[i], i));
+    }
+  }
   $entryForm.reset();
-  location.reload();
+  // location.reload();
   swapWindow('entries');
 
 });
@@ -209,6 +211,7 @@ function swapWindow(e) {
 }
 
 function userEntryList(info, index) {
+  console.log('test');
   var $entryListing = document.createElement('li');
   var $entryColumnWrapper = document.createElement('div');
   var $entryImage = document.createElement('img');
@@ -332,7 +335,8 @@ document.addEventListener('click', function (e) {
       var result = data.entries[i];
       $entryList.append(userEntryList(result, i));
     }
-    location.reload();
+    $entryForm.reset();
+    // location.reload();
     $modalWindow.classList.add('hidden');
   }
 });
