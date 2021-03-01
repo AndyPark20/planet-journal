@@ -18,6 +18,7 @@ var $search = document.querySelector('.searchInput');
 var $magnifying = document.querySelector('.search');
 var $profileUnderLine = document.querySelector('#profileSection');
 var $entriesSection = document.querySelector('#entriesSection');
+var $optionModal = document.querySelector('.modal');
 
 function urlInputSet(e) {
   if ($urlInput.value === '') {
@@ -330,7 +331,6 @@ document.addEventListener('click', function (e) {
     var convert = parseFloat(e.target.getAttribute('data-view'));
     data.entries.splice(convert, 1);
     swapWindow('create-entry');
-
   }
 
   if (e.target.className === 'deleteEntry') {
@@ -342,7 +342,11 @@ document.addEventListener('click', function (e) {
       $entryList.append(userEntryList(result, i));
     }
     $entryForm.reset();
-    // location.reload();
     $modalWindow.classList.add('hidden');
   }
+
+  if (e.target.className === 'far fa-window-close' || e.target.className === 'row row-fixed-modal animation-modal') {
+    $optionModal.classList.add('hidden');
+  }
+
 });
