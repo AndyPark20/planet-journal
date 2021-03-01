@@ -16,6 +16,8 @@ var $editEntryData = document.querySelector('.editEntry');
 var $createEntryImage = document.querySelector('.entryImage');
 var $search = document.querySelector('.searchInput');
 var $magnifying = document.querySelector('.search');
+var $profileUnderLine = document.querySelector('#profileSection');
+var $entriesSection = document.querySelector('#entriesSection');
 
 function urlInputSet(e) {
   if ($urlInput.value === '') {
@@ -250,6 +252,7 @@ function userEntryList(info, index) {
 }
 
 document.addEventListener('DOMContentLoaded', function (e) {
+  $profileUnderLine.classList.add('selected');
   if (data.profile.username === '') {
     swapWindow('edit-profile');
   } else if (data.profile.username.length !== 0 && data.view !== 'entries') {
@@ -271,8 +274,12 @@ document.addEventListener('click', function (e) {
   if (dataView === 'edit-profile') {
     swapWindow(dataView);
   } else if (dataView === 'profile' && data.profile.username.length !== 0) {
+    $entriesSection.classList.remove('selected');
+    $profileUnderLine.classList.add('selected');
     swapWindow(dataView);
   } else if (dataView === 'entries' && formInputFilled() === true) {
+    $profileUnderLine.classList.remove('selected');
+    $entriesSection.classList.add('selected');
     swapWindow(dataView);
   } else if (dataView === 'create-entry' && formInputFilled() === true) {
     swapWindow(dataView);

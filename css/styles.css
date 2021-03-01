@@ -81,6 +81,7 @@ ol {
   font-weight: lighter;
 }
 
+
 .editProfileSaveBtn {
   width: 75px;
   height: 30px;
@@ -116,14 +117,21 @@ ol {
   display: flex;
   padding-left: 3%;
   justify-content: space-evenly;
-  align-items:center;
+  align-items:baseline;
+  padding-top:1%;
 }
+
 
 .profileLinkLast {
   margin-left: 35px;
   font-family: 'Kumbh Sans', sans-serif;
   color: white;
   font-weight: lighter;
+}
+
+
+.selected {
+  color: #daba98;
 }
 
 .linkStyle {
