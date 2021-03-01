@@ -9,7 +9,8 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300&family=Spartan:wght@600&display=swap"rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300&family=Spartan:wght@600&display=swap"
+    rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -20,11 +21,11 @@
   <header>
     <div class="container">
       <div class="row">
-        <div class="column-full header-background">
+        <div class="column-full header-background ">
           <h2>Planet Journal</h2>
           <div class="naviLink">
-            <a href="#" data-view="profile" class="profileLink">Profile</a>
-            <a href="#" data-view="entries" class="profileLinkLast">Entries</a>
+            <a href="#" data-view="profile" id="profileSection" class="profileLink">Profile</a>
+            <a href="#" data-view="entries" id="entriesSection" class="profileLinkLast">Entries</a>
             <div class="searchInput hidden">
               <i class="fas fa-search searchIcon"></i>
               <input type="text" name="search" class="search" placeholder="search">
@@ -39,6 +40,9 @@
     <div class="container modal" data-view="modal">
       <div class="row row-fixed-modal">
         <div class="column-full modal-wrapper">
+          <div class="xBtn">
+            <i class="far fa-window-close"></i>
+          </div>
           <h4>What would you like to do?</h4>
           <div class="options">
             <input class="editEntry" type="button" value="EDIT ENTRY">
